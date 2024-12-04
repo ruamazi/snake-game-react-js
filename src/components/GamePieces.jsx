@@ -135,7 +135,7 @@ const GamePieces = ({ score, setScore, onGameOver }) => {
   const handleAppleCollision = (newSnake) => {
    const snakeHead = newSnake[0];
    if (snakeHead.x === apple.x && snakeHead.y === apple.y) {
-    setScore(score++);
+    setScore((prevScore) => prevScore + 1);
     setApple({
      x: Math.floor((Math.random() * canvas.width) / snakeSpeed) * snakeSpeed,
      y: Math.floor((Math.random() * canvas.height) / snakeSpeed) * snakeSpeed,
@@ -153,7 +153,7 @@ const GamePieces = ({ score, setScore, onGameOver }) => {
     snakeHead.x === extraApple.x &&
     snakeHead.y === extraApple.y
    ) {
-    setScore(score + 5);
+    setScore((prevScore) => prevScore + 5);
     setExtraApple(null);
     for (let i = 0; i < 5; i++) {
      const lastBlock = newSnake[newSnake.length - 1];
